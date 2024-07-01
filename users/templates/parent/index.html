@@ -1,0 +1,225 @@
+{% load static tailwind_tags %}<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+			rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+			integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer" />
+		{% tailwind_css %}
+	</head>
+	<body>
+		{% include 'includes/parentSidebar.html' %}
+
+		<div class="p-4 sm:ml-64">
+			<div class="mt-16">
+				{% if user.is_authenticated %}
+				<p class="text-left font-bold text-3xl text-green-900">
+					<span class="text-2xl text-blue-600">Welcome</span>
+					<br />
+					{{user.first_name}}
+					<br />
+					<br />
+					<span class="text-lg text-blue-600">You want to check your kid's activities?</span>
+				</p>
+			</div>
+			{% endif %}
+
+			<!-- component -->
+			<div class="mx-auto container py-20 px-6">
+				<div class="flex flex-row justify-between flex-wrap">
+					<div
+						class="w-96 h-64 flex flex-col justify-between bg-blue-800 border-blue-700 rounded-lg shadow-2xl shadow-blue-400 border mb-6 py-5 px-4">
+						<div>
+							<h3 class="text-blue-100 leading-7 font-semibold w-11/12">
+								Your kid <b>Cardo Dalisay</b> Attended the School Today
+							</h3>
+						</div>
+						<div>
+							<div class="mb-3 flex items-center">
+								<div
+									class="border border-blue-200 rounded-full px-3 py-1 text-blue-400 text-xs flex items-center"
+									aria-label="due on"
+									role="contentinfo">
+									<i class="fa fa-clock" aria-hidden="true"></i>
+									<p class="ml-2 text-blue-200">7 Sept, 23:00</p>
+								</div>
+								<button
+									class="p-1 bg-blue-100 rounded-full ml-2 animate-bounce text-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+									aria-label="save in starred items"
+									role="button">
+									<i class="fa-solid fa-face-laugh-beam px-1"></i>
+								</button>
+							</div>
+							<div class="flex items-center justify-between text-blue-800">
+								<p class="text-blue-100 text-sm">March 28, 2020</p>
+								<button
+									class="w-8 h-8 rounded-full bg-blue-800 text-white flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+									aria-label="edit note"
+									role="button">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="icon icon-tabler icon-tabler-pencil"
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										stroke-width="1.5"
+										stroke="currentColor"
+										fill="none"
+										stroke-linecap="round"
+										stroke-linejoin="round">
+										<path
+											stroke="none"
+											d="M0 0h24v24H0z"></path>
+										<path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4"></path>
+										<line
+											x1="13.5"
+											y1="6.5"
+											x2="17.5"
+											y2="10.5"></line>
+									</svg>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<div
+						class="w-96 h-64 flex flex-col justify-between bg-red-800 border-red-700 rounded-lg shadow-2xl shadow-red-400 border mb-6 py-5 px-4">
+						<div>
+							<h3 class="text-red-100 leading-7 font-semibold w-11/12">
+								Your kid <b>Cardo Dalisay</b> not Attended the School Today
+							</h3>
+						</div>
+						<div>
+							<div class="mb-3 flex items-center">
+								<div
+									class="border border-red-300 rounded-full px-3 py-1 text-red-400 text-xs flex items-center"
+									aria-label="due on"
+									role="contentinfo">
+									<i class="fa fa-clock" aria-hidden="true"></i>
+									<p class="ml-2 text-red-400">7 Sept, 23:00</p>
+								</div>
+								<button
+									class="p-1 bg-red-100 rounded-full ml-2 animate-bounce text-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+									aria-label="save in starred items"
+									role="button">
+									<i class="fa-solid fa-face-frown px-1"></i>
+								</button>
+							</div>
+							<div class="flex items-center justify-between text-red-800">
+								<p class="text-red-100 text-sm">March 28, 2020</p>
+								<button
+									class="w-8 h-8 rounded-full bg-red-800 text-white flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+									aria-label="edit note"
+									role="button">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="icon icon-tabler icon-tabler-pencil"
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										stroke-width="1.5"
+										stroke="currentColor"
+										fill="none"
+										stroke-linecap="round"
+										stroke-linejoin="round">
+										<path
+											stroke="none"
+											d="M0 0h24v24H0z"></path>
+										<path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4"></path>
+										<line
+											x1="13.5"
+											y1="6.5"
+											x2="17.5"
+											y2="10.5"></line>
+									</svg>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<div
+						class="w-96 h-64 flex flex-col justify-between bg-blue-800 border-blue-700 rounded-lg shadow-2xl shadow-blue-400 border mb-6 py-5 px-4">
+						<div>
+							<h3 class="text-blue-100 leading-7 font-semibold w-11/12">
+								Your kid <b>Cardo Dalisay</b> Attended the School Today
+							</h3>
+						</div>
+						<div>
+							<div class="mb-3 flex items-center">
+								<div
+									class="border border-blue-300 rounded-full px-3 py-1 text-blue-400 text-xs flex items-center"
+									aria-label="due on"
+									role="contentinfo">
+									<i class="fa fa-clock" aria-hidden="true"></i>
+									<p class="ml-2 text-blue-400">7 Sept, 23:00</p>
+								</div>
+								<button
+									class="p-1 bg-blue-100 rounded-full ml-2 text-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+									aria-label="save in starred items"
+									role="button">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="icon icon-tabler icon-tabler-star"
+										width="16"
+										height="16"
+										viewBox="0 0 24 24"
+										stroke-width="1.5"
+										stroke="currentColor"
+										fill="none"
+										stroke-linecap="round"
+										stroke-linejoin="round">
+										<path
+											stroke="none"
+											d="M0 0h24v24H0z"></path>
+										<path
+											d="M12 17.75l-6.172 3.245 1.179-6.873-4.993-4.867 6.9-1.002L12 2l3.086 6.253 6.9 1.002-4.993 4.867 1.179 6.873z"></path>
+									</svg>
+								</button>
+							</div>
+							<div class="flex items-center justify-between text-blue-800">
+								<p class="text-blue-100 text-sm">March 28, 2020</p>
+								<button
+									class="w-8 h-8 rounded-full bg-blue-800 text-white flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+									aria-label="edit note"
+									role="button">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="icon icon-tabler icon-tabler-pencil"
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										stroke-width="1.5"
+										stroke="currentColor"
+										fill="none"
+										stroke-linecap="round"
+										stroke-linejoin="round">
+										<path
+											stroke="none"
+											d="M0 0h24v24H0z"></path>
+										<path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4"></path>
+										<line
+											x1="13.5"
+											y1="6.5"
+											x2="17.5"
+											y2="10.5"></line>
+									</svg>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+	</body>
+</html>
