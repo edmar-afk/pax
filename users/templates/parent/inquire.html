@@ -1,0 +1,56 @@
+{% load static tailwind_tags %}<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Dashboard</title>
+
+		{% tailwind_css %}
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+			rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+			integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer" />
+	</head>
+	<body>
+		{% include 'includes/parentSidebar.html' %}
+
+		<div class="p-4 sm:ml-64">
+			<p class="text-gray-800 mt-24 font-bold text-2xl">Inquire Teacher</p>
+			<p class="mb-4 font-semibold text-gray-500"></p>
+			{% for message in messages %} {% if message.level_tag == 'success' %}
+			<p class="text-left text-purple-400 font-bold mt-4 mb-4 text-md">{{message}}</p>
+			{% else %}
+			<p class="text-left text-red-400 font-bold mt-4 mb-4 text-md">{{message}}</p>
+			{%endif%} {% endfor %}
+
+			<center>
+				<img
+					src="{% static 'img/teacher.png' %}"
+					width="400"
+					class="mt-14"
+					alt="" />
+				<a
+					href="{% url 'inquire' %}"
+					class="block text-white w-fit bg-purple-700 mt-4 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+					type="button">
+					<i
+						class="fa fa-pen"
+						aria-hidden="true"></i>
+					Request Inquiry
+				</a>
+				<p class="text-xs mt-1 text-gray-600 mb-14">If you don't recieve an activity of your student, click the button above</p>
+			</center>
+
+			
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+	</body>
+</html>

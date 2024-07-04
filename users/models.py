@@ -5,6 +5,22 @@ from django.contrib.auth.models import User
 
 class Student(models.Model):
     name = models.CharField(max_length=250)
-    year = models.CharField(max_length=250)
-    parent = models.OneToOneField(User, on_delete=models.CASCADE)
-    attend_date = models.DateField()
+    parent = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+
+
+class Attendance(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    parent = models.ForeignKey(User, on_delete=models.CASCADE)
+    status = models.CharField(max_length=250)
+    attended_at = models.DateTimeField()
+    
+    
+class ResponseNotes(models.Model):
+    sender = models.ForeignKey(User, on_delete=models.CASCADE)
+    notes = models.TextField()
+    date_submitted = models.DateTimeField()
+    
+class InquireNotes(models.Model):
+    sender = models.ForeignKey(User, on_delete=models.CASCADE)
+    notes = models.TextField()
+    date_submitted = models.DateTimeField()

@@ -1,0 +1,74 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Dashboard</title>
+
+		{% tailwind_css %}
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+			rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+			integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer" />
+	</head>
+	<body>
+		{% include 'includes/adminSidebar.html' %}
+
+		<div class="p-4 sm:ml-64">
+			<p class="text-gray-800 mt-24 mb-12 font-bold text-2xl">List of Parents <br>
+			<span class="text-lg text-gray-600">Here's the list of parents. You might want to confirm their accounts.</span></p>
+
+			<div class="flex flex-row justify-evenly">
+				{% for list in parents %}
+				<div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
+					<div class="flex flex-col items-center pb-10">
+						<img
+							class="w-24 h-24 mb-3 mt-8 rounded-full shadow-lg"
+							src="{% static 'img/parent.png' %}"
+							alt="Bonnie image" />
+						<h5 class="mb-1 text-xl font-medium text-gray-900">{{list.first_name}}</h5>
+						{% if list.is_staff == True %}
+						<span class="text-sm text-green-500 font-bold">
+							Account Approved
+							<i
+								class="fa fa-check-circle"
+								aria-hidden="true"></i>
+						</span>
+
+						{% else %}
+						<span class="text-sm text-red-500 font-bold">
+							Account Declined
+							<i
+								class="fa fa-times-circle"
+								aria-hidden="true"></i>
+						</span>
+						{% endif %}
+						<div class="flex mt-4 md:mt-6">
+							<a
+								href="{% url 'acceptUser' list.id %}"
+								class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none">
+								Approve
+							</a>
+							<a
+								href="{% url 'declineUser' list.id %}"
+								class="py-2 px-4 ms-2 text-sm font-medium text-red-900 focus:outline-none bg-red-300 rounded-lg border border-red-200 hover:bg-red-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-red-100">
+								Decline
+							</a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+	</body>
+</html>
