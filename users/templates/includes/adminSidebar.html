@@ -1,5 +1,4 @@
-{% load static %}
-<nav class="fixed top-0 z-50 w-64 bg-purple-500">
+{% load static %}<nav class="fixed top-0 z-50 w-64 bg-purple-500">
 	<div class="px-3 py-3 lg:px-5 lg:pl-3">
 		<div class="flex items-center justify-between">
 			<div class="flex items-center justify-start rtl:justify-end">
@@ -76,7 +75,27 @@
 			</li>
 			<li>
 				<a
-					href="#"
+					href="{% url 'responses' %}"
+					class="flex items-center p-2 text-white rounded-lg hover:bg-purple-400 group">
+					<i
+						class="fa fa-users w-5 h-5 text-white transition duration-75 group-hover:text-white"
+						aria-hidden="true"></i>
+					<span class="flex-1 ms-3 whitespace-nowrap">Parents Responses</span>
+				</a>
+			</li>
+			<li>
+				<a
+					href="{% url 'inquiries' %}"
+					class="flex items-center p-2 text-white rounded-lg hover:bg-purple-400 group">
+					<i
+						class="fa fa-question-circle w-5 h-5 text-white transition duration-75 group-hover:text-white"
+						aria-hidden="true"></i>
+					<span class="flex-1 ms-3 whitespace-nowrap">Inquiries</span>
+				</a>
+			</li>
+			<li>
+				<a
+					href="{% url 'homepage' %}"
 					class="flex items-center p-2 text-white rounded-lg hover:bg-purple-400 group">
 					<i
 						class="fa fa-power-off w-5 h-5 text-white transition duration-75 group-hover:text-white"

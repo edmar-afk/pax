@@ -10,6 +10,23 @@ from django.utils import timezone
 from datetime import datetime, timedelta
 # Create your views here.
 
+def responses(request):
+    notes = ResponseNotes.objects.all().order_by('-id')
+    
+    context = {
+        'notes': notes,
+    }
+    
+    return render(request, 'main/responses.html', context)
+
+def inquiries(request):
+    inquiries = InquireNotes.objects.all().order_by('-id')
+    
+    context = {
+        'inquiries': inquiries,
+    }
+    
+    return render(request, 'main/inquiry.html', context)
 
 
 def entryStudent(request):
@@ -158,6 +175,17 @@ def parentDashboard(request):
 def removeUser(request, user_id):
     User.objects.filter(id=user_id).delete()
     messages.success(request, 'User Removed')
+    return redirect(request.META.get('HTTP_REFERER'))
+
+def deleteInquiry(request, inquiry_id):
+    InquireNotes.objects.filter(id=inquiry_id).delete()
+    messages.success(request, 'Inquiry Removed')
+    return redirect(request.META.get('HTTP_REFERER'))
+
+
+def deleteResponse(request, response_id):
+    ResponseNotes.objects.filter(id=response_id).delete()
+    messages.success(request, 'Feedback Removed')
     return redirect(request.META.get('HTTP_REFERER'))
 
 
